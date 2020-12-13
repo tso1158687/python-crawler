@@ -7,8 +7,16 @@ from firebase_admin import firestore
 cred = credentials.Certificate(
     "./python-crawler-38a6b-firebase-adminsdk-zs6u9-a33047c4c1.json")
 firebase_admin.initialize_app(cred)
-
+nowTime=firestore.SERVER_TIMESTAMP
 db = firestore.client()
+# def test():
+#     print('test')
+#     db.collection(u'video').document('migd-619').update({
+#     'link': firestore.ArrayUnion(['fengyuan'])
+#     })
+    
+
+# test()
 def getSingleVideoLink(singleVideoLink: str, videoId: str):
     singlePage = requests.get(singleVideoLink)
     soup = BeautifulSoup(singlePage.text, "html.parser")
@@ -20,7 +28,8 @@ def getSingleVideoLink(singleVideoLink: str, videoId: str):
         print(downloadLink['href'])  # 輸出排版後的HTML內容
     videoData = {
         'id': videoId,
-        'link': downloadLinkList
+        'link': downloadLinkList,
+        'updateTime': nowTime
     }
     # print(videoData)
     postDataToFirebase(videoData)
@@ -28,17 +37,9 @@ def getSingleVideoLink(singleVideoLink: str, videoId: str):
 
 def postDataToFirebase(videoData):
     # 初始化firestore
-    
 
-
-    # Add a new doc in collection 'cities' with ID 'LA'
     db.collection(u'video').document(videoData['id']).set(videoData)
 
-    # video_ref=db.collection("video").document("student")
-    # print(doc_ref.get().to_dict())
-
-
-# main()
 # main
 response = requests.get(
     "https://javfree.me/category/mosaic")
