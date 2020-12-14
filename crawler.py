@@ -36,9 +36,19 @@ def getSingleVideoLink(singleVideoLink: str, videoId: str):
 
 
 def postDataToFirebase(videoData):
-    # 初始化firestore
+    # TODO:邏輯 如果不存在:新增；如果存在:更新
+    # db.collection(u'video').document(videoData['id']).set(videoData)
+    isVideoExist=db.collection(u'video').document(videoData['id']).get().exists
+    if isVideoExist:
+        print('更新')
+        db.collection(u'video').document(videoData['id']).update({
+            'link': firestore.ArrayUnion(videoData['link'])
+        })
+    else:
+        print('新增')
+        db.collection(u'video').document(videoData['id']).set(videoData)
+    # print(db.collection(u'video').document('aaaaa').get().exists)
 
-    db.collection(u'video').document(videoData['id']).set(videoData)
 
 # main
 response = requests.get(
