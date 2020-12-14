@@ -46,6 +46,7 @@ def postDataToFirebase(videoData):
         })
     else:
         print('新增')
+        print('aaa')
         db.collection(u'video').document(videoData['id']).set(videoData)
     # print(db.collection(u'video').document('aaaaa').get().exists)
 
