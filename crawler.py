@@ -9,14 +9,7 @@ cred = credentials.Certificate(
 firebase_admin.initialize_app(cred)
 nowTime=firestore.SERVER_TIMESTAMP
 db = firestore.client()
-# def test():
-#     print('test')
-#     db.collection(u'video').document('migd-619').update({
-#     'link': firestore.ArrayUnion(['fengyuan'])
-#     })
-    
 
-# test()
 def getSingleVideoLink(singleVideoLink: str, videoId: str):
     singlePage = requests.get(singleVideoLink)
     soup = BeautifulSoup(singlePage.text, "html.parser")
@@ -46,19 +39,23 @@ def postDataToFirebase(videoData):
         })
     else:
         print('新增')
-        print('aaa')
         db.collection(u'video').document(videoData['id']).set(videoData)
-    # print(db.collection(u'video').document('aaaaa').get().exists)
 
 
 # main
-response = requests.get(
-    "https://javfree.me/category/mosaic")
-soup = BeautifulSoup(response.text, "html.parser")
-titles = soup.find_all('a', href=True, class_="thumbnail-link")
-for res in titles:
-    print('videoId')
+for i in range(6,10):
+    print('現在是第',i,'頁')
+    url=''
+    if i == 1:
+        url='https://javfree.me/category/mosaic'
+    else:
+        url='https://javfree.me/category/mosaic/page/'+str(i)
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    titles = soup.find_all('a', href=True, class_="thumbnail-link")
+    for res in titles:
+        print('videoId')
 
-    videoUrlArray = res['href'].split("/")
-    print(videoUrlArray[-1])
-    getSingleVideoLink(res['href'],videoUrlArray[-1])
+        videoUrlArray = res['href'].split("/")
+        print(videoUrlArray[-1])
+        getSingleVideoLink(res['href'],videoUrlArray[-1])
