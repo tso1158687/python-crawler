@@ -22,7 +22,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: install dependencies
-      uses: py-actions/py-dependency-install@v3
+      uses: py-actions/py-dependency-install@v2
+      with:
+        python-version: 3.8
        
     - run: python crawler.py
 
