@@ -43,7 +43,7 @@ def postDataToFirebase(videoData):
 
 
 # main
-for i in range(6,10):
+for i in range(1,5):
     print('現在是第',i,'頁')
     url=''
     if i == 1:
