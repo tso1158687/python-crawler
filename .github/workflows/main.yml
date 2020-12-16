@@ -27,7 +27,7 @@ jobs:
     - name: install dependencies
       uses: py-actions/py-dependency-install@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.8
        
     - run: python crawler.py
 
