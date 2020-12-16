@@ -22,7 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: install dependencies
-      uses: py-actions/py-dependency-install@v2
+      uses: py-actions/py-dependency-install@v3
        
     - run: python crawler.py
 
