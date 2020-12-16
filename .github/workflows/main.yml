@@ -19,20 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # - uses: actions/checkout@v2
-      # steps:
-      # this Action should follow steps to set up Python build environment
-      # - name: Install Python dependencies
-      #   uses: py-actions/py-dependency-install@v2
-      #   with:
-      #     path: "requirements.txt"
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v2
-        with:
-          path: "requirements.txt"
-      - run: python crawler.py
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: install dependencies
+      uses: py-actions/py-dependency-install@v2
+       
+    - run: python crawler.py
 
