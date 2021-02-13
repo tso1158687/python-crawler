@@ -46,7 +46,7 @@ def postDataToFirebase(videoData):
 for i in range(1,10):
     print('現在是第',i,'頁')
     url=''
-    print(sys.argv)
+    # print(sys.argv)
     if i == 1:
         url= sys.argv[1]
     else:
