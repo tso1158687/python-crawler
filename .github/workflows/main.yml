@@ -9,7 +9,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 */2 * * *' # update every 8 hours
+    - cron: '0 */2 * * *' # update every 2 hours
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,6 +30,7 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         env:
           URL: ${{ env.url }}
+      - run: echo $MY_SECRET
       - run: $URL
         env:
           URL: python crawler.py ${{secrets.URL}}
