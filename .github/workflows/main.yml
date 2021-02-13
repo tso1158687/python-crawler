@@ -9,7 +9,8 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 */2 * * *' # update every 2 hours
+    - cron:  '*/15 * * * *'
+    # - cron: '0 */2 * * *' # update every 2 hours
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
