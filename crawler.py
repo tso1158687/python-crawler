@@ -1,5 +1,5 @@
 import requests
-
+import sys
 from bs4 import BeautifulSoup
 import firebase_admin
 from firebase_admin import credentials
@@ -47,9 +47,9 @@ for i in range(1,10):
     print('現在是第',i,'頁')
     url=''
     if i == 1:
-        url='https://javfree.me/category/mosaic'
+        url= sys.argv[1]
     else:
-        url='https://javfree.me/category/mosaic/page/'+str(i)
+        url= sys.argv[1]+'/page/'+str(i)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     titles = soup.find_all('a', href=True, class_="thumbnail-link")
