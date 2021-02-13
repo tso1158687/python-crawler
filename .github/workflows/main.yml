@@ -24,11 +24,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: show dir
-        run: ls
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
       - name: Install Python dependencies
         uses: py-actions/py-dependency-install@v2
       - run: python crawler.py
