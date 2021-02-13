@@ -29,3 +29,5 @@ jobs:
         env:
           URL: ${{ secrets.url }}
       - run: python crawler.py $URL
+        env:
+          URL: ${{ secrets.url }}
