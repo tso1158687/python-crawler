@@ -26,4 +26,6 @@ jobs:
           python-version: '3.x'
       - name: Install Python dependencies
         uses: py-actions/py-dependency-install@v2
-      - run: python crawler.py ${{secrets.url}}
+        env:
+          SUPER_SECRET: ${{ secrets.url }}
+      - run: python crawler.py $secrets.url
