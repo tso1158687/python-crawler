@@ -27,7 +27,7 @@ jobs:
       - name: Install Python dependencies
         uses: py-actions/py-dependency-install@v2
         env:
-          URL: ${{ secrets.url }}
+          URL: ${{ env.url }}
       - run: $URL
         env:
-          URL: python crawler.py ${{ secrets.URL }}
+          URL: python crawler.py ${{ env.URL }}
