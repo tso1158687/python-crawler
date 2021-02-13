@@ -28,6 +28,6 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         env:
           URL: ${{ secrets.url }}
-      - run: python crawler.py $URL
+      - run: $URL
         env:
-          URL: ${{ secrets.url }}
+          URL: python crawler.py ${{ secrets.url }}
