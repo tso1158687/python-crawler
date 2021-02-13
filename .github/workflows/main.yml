@@ -32,4 +32,4 @@ jobs:
           URL: ${{ env.url }}
       - run: $URL
         env:
-          URL: python crawler.py $MY_SECRET
+          URL: python crawler.py ${{MY_SECRET}}
