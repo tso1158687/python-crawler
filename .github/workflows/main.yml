@@ -27,5 +27,5 @@ jobs:
       - name: Install Python dependencies
         uses: py-actions/py-dependency-install@v2
         env:
-          SUPER_SECRET: ${{ secrets.url }}
-      - run: python crawler.py $secrets.url
+          URL: ${{ secrets.url }}
+      - run: python crawler.py $URL
