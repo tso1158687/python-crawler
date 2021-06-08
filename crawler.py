@@ -25,6 +25,7 @@ def getSingleVideoLink(singleVideoLink: str, videoId: str):
         'updateTime': nowTime
     }
     # print(videoData)
+    # 
     postDataToFirebase(videoData)
 
 
